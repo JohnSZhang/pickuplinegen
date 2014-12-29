@@ -9,13 +9,12 @@ class Pickup < ActiveRecord::Base
     freq.each do |key, value|
       template.subsitute(key, value)
     end
-    template.text
+    template
   end
 
   def subsitute(symbol, freq)
     obj_type = Mapping.find_by_symbol(symbol).object_type
-    objects = obj_type.constantize.all.sample(freq)
-
+    objects = Partial.where(object_type: obj_type).sample(freq)
     freq.times do |i|
       replacement = objects.pop.text
       self.text.sub!(symbol[0], replacement)

@@ -16,17 +16,6 @@ ActiveRecord::Schema.define(version: 20141229201327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activities", force: :cascade do |t|
-    t.string   "text",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "endearments", force: :cascade do |t|
-    t.string   "text",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "mappings", force: :cascade do |t|
     t.string   "symbol",      null: false
@@ -36,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141229201327) do
   end
 
   create_table "partials", force: :cascade do |t|
-    t.string   "type",       null: false
+    t.string   "object_type",       null: false
     t.string   "text",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
